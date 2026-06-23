@@ -1,0 +1,542 @@
+﻿@reference "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   THEME VARIABLES – LIGHT (pale yellow background, dark text)
+   ============================================================ */
+@layer base {
+  :root {
+    /* --- LIGHT MODE (pale yellow bg, dark ink text) --- */
+    --bg-primary: #fdf6e3;          /* pale yellow base */
+    --bg-secondary: #fffdf7;
+    --bg-card: rgba(255, 253, 247, 0.85);
+    --text-primary: #0a0a0a;        /* nearly black */
+    --text-secondary: #1a1a1a;      /* very dark gray */
+    --text-muted: #2d2d2d;          /* dark gray */
+    --accent-primary: #4f46e5;
+    --accent-secondary: #4338ca;
+    --accent-tertiary: #0ea5e9;
+    --border-color: rgba(0, 0, 0, 0.06);
+    --glass-bg: rgba(255, 253, 247, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+    --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.04), 0 8px 20px rgba(0, 0, 0, 0.02);
+    --card-shadow-hover: 0 30px 60px rgba(0, 0, 0, 0.06), 0 12px 30px rgba(0, 0, 0, 0.04);
+    --hover-bg: rgba(79, 70, 229, 0.06);
+    --glow-color: rgba(79, 70, 229, 0.12);
+    --scrollbar-track: #eef2f6;
+    --scrollbar-thumb: #c7d2fe;
+    --body-bg: radial-gradient(circle at 20% 20%, #fff8e8 0%, #fdf6e3 100%);
+    --tooltip-bg: #ffffff;
+    --tooltip-text: #0a0a0a;
+    --input-bg: rgba(255, 255, 255, 0.85);
+    --input-border: rgba(0, 0, 0, 0.08);
+    --input-focus: rgba(79, 70, 229, 0.25);
+    --glass-backdrop: blur(16px);
+  }
+
+  /* --- DARK MODE (completely untouched) --- */
+  .dark {
+    --bg-primary: #0a1125;
+    --bg-secondary: #0f172a;
+    --bg-card: rgba(15, 23, 42, 0.74);
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --accent-primary: #818cf8;
+    --accent-secondary: #6366f1;
+    --accent-tertiary: #38bdf8;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(15, 23, 42, 0.74);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 20px 70px rgba(0, 0, 0, 0.48);
+    --card-shadow: 0 24px 90px rgba(0, 0, 0, 0.55);
+    --card-shadow-hover: 0 30px 100px rgba(0, 0, 0, 0.65);
+    --hover-bg: rgba(129, 140, 248, 0.14);
+    --glow-color: rgba(79, 70, 229, 0.32);
+    --scrollbar-track: #0f172a;
+    --scrollbar-thumb: #6366f1;
+    --body-bg: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    --tooltip-bg: #111827;
+    --tooltip-text: #f8fafc;
+    --input-bg: rgba(15, 23, 42, 0.6);
+    --input-border: rgba(255, 255, 255, 0.1);
+    --input-focus: rgba(129, 140, 248, 0.3);
+    --glass-backdrop: blur(18px);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--body-bg);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    @apply antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: clamp(2.75rem, 4.5vw, 4.5rem);
+    line-height: 1.05;
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 3.2vw, 3rem);
+    line-height: 1.1;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+    font-style: italic;
+  }
+
+  p {
+    color: var(--text-secondary);
+    line-height: 1.85;
+    letter-spacing: -0.01em;
+  }
+
+  strong {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  em {
+    font-style: italic;
+    color: var(--accent-primary);
+  }
+
+  ::selection {
+    background: rgba(79, 70, 229, 0.2);
+    color: white;
+  }
+}
+
+/* ============================================================
+   GLASS & CARDS – light mode (pale yellow glass)
+   ============================================================ */
+.glass,
+.glass-light,
+.glass-premium {
+  border-radius: 28px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  transition: transform 0.32s ease, box-shadow 0.32s ease, background 0.32s ease, border-color 0.32s ease;
+}
+
+:root .glass-light {
+  background: rgba(255, 253, 247, 0.85);
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+:root .glass-premium {
+  background: rgba(255, 253, 247, 0.92);
+  border-color: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+
+.dark .glass-light {
+  background: rgba(15, 23, 42, 0.68);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .glass-premium {
+  background: rgba(15, 23, 42, 0.82);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.glass:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
+}
+
+.glass-light:hover,
+.glass-premium:hover {
+  box-shadow: 0 24px 70px rgba(79, 70, 229, 0.08);
+}
+
+/* ============================================================
+   GRADIENT TEXT (unchanged)
+   ============================================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+  font-size: clamp(2rem, 2.8vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================================
+   CARDS – same shadows (no change)
+   ============================================================ */
+.glow-card {
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: var(--card-shadow);
+  background: var(--bg-card);
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(79, 70, 229, 0.15);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card-surface {
+  background: rgba(255, 253, 247, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .card-surface {
+  background: rgba(15, 23, 42, 0.78);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.project-image {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .project-image {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================================
+   BUTTONS – unchanged
+   ============================================================ */
+.btn-premium,
+.btn-outline-premium,
+.btn-shine,
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.btn-premium,
+.btn-primary,
+.btn-shine {
+  padding: 0.95rem 1.8rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.2);
+}
+
+.btn-premium:hover,
+.btn-primary:hover,
+.btn-shine:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px rgba(79, 70, 229, 0.25);
+}
+
+.btn-outline-premium,
+.btn-secondary {
+  padding: 0.95rem 1.8rem;
+  background: transparent;
+  border: 1.75px solid rgba(79, 70, 229, 0.25);
+  color: var(--accent-primary);
+}
+
+.btn-outline-premium:hover,
+.btn-secondary:hover {
+  background: rgba(79, 70, 229, 0.06);
+  border-color: rgba(79, 70, 229, 0.5);
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 45%);
+  opacity: 0.4;
+  transform: scale(0.6);
+  transition: transform 0.45s ease;
+}
+
+.btn-shine:hover::before {
+  transform: scale(1);
+}
+
+/* ============================================================
+   SOCIAL ICONS
+   ============================================================ */
+.social-icon {
+  transition: transform 0.25s ease, color 0.25s ease;
+  color: var(--text-secondary);
+}
+
+.social-icon:hover {
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+.social-icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border-radius: 14px;
+  background: rgba(79, 70, 229, 0.04);
+  border: 1px solid rgba(79, 70, 229, 0.06);
+  overflow: visible;
+}
+
+.social-icon-wrapper:hover {
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.social-tooltip {
+  @apply absolute -bottom-9 left-1/2 -translate-x-1/2 opacity-0 translate-y-2 pointer-events-none transition-all duration-300;
+  @apply text-xs px-3 py-1.5 rounded-xl whitespace-nowrap font-medium;
+  background: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+  min-width: max-content;
+}
+
+.social-icon-wrapper:hover .social-tooltip {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px var(--input-focus);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #818cf8;
+}
+
+/* ============================================================
+   SECTION & DIVIDERS
+   ============================================================ */
+section {
+  @apply py-24 md:py-32;
+}
+
+section > * + * {
+  @apply mt-8 md:mt-12;
+}
+
+.section-title {
+  color: var(--text-primary);
+}
+
+code {
+  @apply px-2 py-1 rounded-md text-sm font-mono;
+  background: rgba(79, 70, 229, 0.06);
+  color: #4338ca;
+}
+
+pre {
+  @apply p-4 rounded-2xl overflow-auto;
+  background: rgba(255, 253, 247, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.divider {
+  @apply h-px w-full;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.06) 50%, transparent);
+}
+
+.divider-premium {
+  @apply h-px w-full;
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.15) 50%, transparent);
+}
+
+.intro-video-container video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.intro-video-container {
+  background: #0a0c1a;
+}
+
+/* ============================================================
+   FLIP CARD
+   ============================================================ */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-inner {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 420px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.hover\:rotate-y-180:hover {
+  transform: rotateY(180deg);
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.flip-card {
+  height: 100%;
+}
+
+.flip-card-front,
+.flip-card-back {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.rotate-y-180 {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.04);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    @apply py-16 md:py-20;
+  }
+
+  .flip-card-inner {
+    min-height: 360px;
+  }
+}
+
+/* ============================================================
+   EXTRA: SKILL SECTION TEXT – forced dark in light mode only
+   ============================================================ */
+:root #skills h3,
+:root #skills .category-title,
+:root #skills .skill-badge,
+:root #skills .skill-chip,
+:root #skills span[class*="glass-light"] {
+  color: #0a0a0a !important;
+}
+
+:root #skills .glass-premium p,
+:root #skills .glass-premium span,
+:root #skills .glass-light span,
+:root #skills .glass-light p {
+  color: #0a0a0a !important;
+}
+
+.dark #skills h3,
+.dark #skills .category-title,
+.dark #skills .skill-badge,
+.dark #skills .skill-chip,
+.dark #skills span[class*="glass-light"],
+.dark #skills .glass-premium p,
+.dark #skills .glass-premium span,
+.dark #skills .glass-light span,
+.dark #skills .glass-light p {
+  color: inherit !important;
+}
