@@ -12,21 +12,16 @@ export const SOCIAL_LINKS = {
     icon: 'FaEnvelope',
     ariaLabel: 'Send email',
   },
-//   linkedin: {
-//     url: 'https://linkedin.com/in/divyanshrastogi',
-//     label: 'Connect on LinkedIn',
-//     icon: 'FaLinkedinIn',
-//     ariaLabel: 'LinkedIn profile',
-//   },
-//   github: {
-//     url: 'https://github.com/divyanshrastogi',
-//     label: 'View my GitHub',
-//     icon: 'FaGithub',
-//     ariaLabel: 'GitHub profile',
-//   },
+  linkedin: {
+    url: 'https://www.linkedin.com/in/divyanshrastogi30',
+    label: 'Connect on LinkedIn',
+    icon: 'FaLinkedinIn',
+    ariaLabel: 'LinkedIn profile',
+  },
+
 };
 
 export const CONTACT_INFO = {
-  phone: '+91 98765 43210',
+  phone: '+91 8077721333',
   email: 'divyansh.rastogi@example.com',
 };
