@@ -1,7 +1,7 @@
 // src/components/Contact.jsx
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FaPhone, FaEnvelope, FaWhatsapp, FaLinkedinIn } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaWhatsapp, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import SocialIcon from './SocialIcon';
 import { SOCIAL_LINKS, CONTACT_INFO } from '../config/socialLinks';
 import emailjs from '@emailjs/browser';
@@ -103,7 +103,7 @@ const Contact = () => {
                 <span className="text-sm md:text-base">Chat on WhatsApp</span>
               </a>
 
-              {/* LinkedIn (highlight) */}
+              {/* LinkedIn */}
               <a
                 href="https://linkedin.com/in/divyanshrastogi30"
                 target="_blank"
@@ -115,22 +115,19 @@ const Contact = () => {
                 </span>
                 <span className="text-sm md:text-base">divyanshrastogi30</span>
               </a>
-            </div>
 
-            <div className="pt-4 border-t border-[var(--border-color)]">
-              <p className="text-[var(--text-muted)] text-xs mb-3 tracking-wider">SOCIAL PROFILES</p>
-              <div className="flex flex-wrap gap-2">
-                {socialLinksArray.map((social) => (
-                  <SocialIcon
-                    key={social.label}
-                    link={social.url}
-                    iconName={social.icon}
-                    label={social.label}
-                    ariaLabel={social.ariaLabel}
-                    className="!p-2"
-                  />
-                ))}
-              </div>
+              {/* GitHub */}
+              <a
+                href="https://github.com/30Divyansh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition group"
+              >
+                <span className="p-3 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] group-hover:bg-[var(--accent-primary)]/20 transition">
+                  <FaGithub className="text-lg" />
+                </span>
+                <span className="text-sm md:text-base">30Divyansh</span>
+              </a>
             </div>
           </div>
         </div>

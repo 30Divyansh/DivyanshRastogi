@@ -2,29 +2,39 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  SiReact, SiTailwindcss, SiPython, SiTensorflow,
-  SiJavascript, SiNodedotjs, SiMongodb, SiGit,
-  SiDocker, SiKubernetes, SiGraphql, SiPostgresql,
-  SiTypescript, SiNextdotjs, SiVercel, SiSupabase
+  SiCplusplus,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiSocketdotio,
+  SiTensorflow,
+  SiApachekafka,
+  SiRedis,
+  SiElasticsearch,
+  SiGit,
+  SiGithub,
+  SiPostgresql,
 } from 'react-icons/si';
 
 const techIcons = [
-  { icon: SiReact, label: 'React', color: '#61DAFB' },
-  { icon: SiTailwindcss, label: 'Tailwind', color: '#06B6D4' },
-  { icon: SiPython, label: 'Python', color: '#3776AB' },
-  { icon: SiTensorflow, label: 'TensorFlow', color: '#FF6F00' },
+  { icon: SiCplusplus, label: 'C++', color: '#00599C' },
   { icon: SiJavascript, label: 'JavaScript', color: '#F7DF1E' },
-  { icon: SiNodedotjs, label: 'Node.js', color: '#339933' },
-  { icon: SiMongodb, label: 'MongoDB', color: '#47A248' },
-  { icon: SiGit, label: 'Git', color: '#F05032' },
-  { icon: SiDocker, label: 'Docker', color: '#2496ED' },
-  { icon: SiKubernetes, label: 'Kubernetes', color: '#326CE5' },
-  { icon: SiGraphql, label: 'GraphQL', color: '#E10098' },
-  { icon: SiPostgresql, label: 'PostgreSQL', color: '#336791' },
   { icon: SiTypescript, label: 'TypeScript', color: '#3178C6' },
-  { icon: SiNextdotjs, label: 'Next.js', color: '#000000' },
-  { icon: SiVercel, label: 'Vercel', color: '#000000' },
-  { icon: SiSupabase, label: 'Supabase', color: '#3ECF8E' },
+  { icon: SiReact, label: 'React', color: '#61DAFB' },
+  { icon: SiNodedotjs, label: 'Node.js', color: '#339933' },
+  { icon: SiExpress, label: 'Express', color: '#000000' },
+  { icon: SiMongodb, label: 'MongoDB', color: '#47A248' },
+  { icon: SiSocketdotio, label: 'Socket.IO', color: '#010101' },
+  { icon: SiTensorflow, label: 'TensorFlow', color: '#FF6F00' },
+  { icon: SiApachekafka, label: 'Kafka', color: '#231F20' },
+  { icon: SiRedis, label: 'Redis', color: '#DC382D' },
+  { icon: SiElasticsearch, label: 'Elasticsearch', color: '#005571' },
+  { icon: SiGit, label: 'Git', color: '#F05032' },
+  { icon: SiGithub, label: 'GitHub', color: '#181717' },
+  { icon: SiPostgresql, label: 'SQL', color: '#336791' },
 ];
 
 const orbitTransition = {
@@ -83,7 +93,7 @@ const TechRadial = () => {
                   {selectedTech.label}
                 </h3>
                 <p className="mt-3 text-[var(--text-secondary)] text-sm leading-6">
-                  Focused tech spotlight. Tap the icon again to close and continue exploring the orbit.
+                  Tap the icon again to close and explore the orbit.
                 </p>
               </div>
             </motion.div>

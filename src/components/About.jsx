@@ -8,11 +8,11 @@ import {
 } from 'react-icons/fa';
 import { SiTensorflow, SiJavascript, SiTailwindcss } from 'react-icons/si';
 
-// ----- Data -----
+// ----- Updated Stats (no icons, new values) -----
 const stats = [
-  { label: 'Projects', value: 12, suffix: '+', icon: FaCode },
-  { label: 'Coding Problems', value: 400, suffix: '+', icon: FaBrain },
-  { label: 'Leadership Roles', value: 4, suffix: '', icon: FaUsers },
+  { label: 'Projects', value: 5, suffix: '+' },
+  { label: 'Coding Problems', value: 600, suffix: '+' },
+  { label: 'Leadership Roles', value: 4, suffix: '' },
 ];
 
 const timeline = [
@@ -92,7 +92,6 @@ const About = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const cardRef = useRef(null);
 
-  // 3D tilt on hover – based on mouse position
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
@@ -136,7 +135,7 @@ const About = () => {
         <h2 className="section-title">About Me</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* --- LEFT SIDE: Introduction --- */}
+          {/* LEFT SIDE */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -191,7 +190,7 @@ const About = () => {
               neural networks to architecting scalable web platforms.
             </motion.p>
 
-            {/* Animated Journey Timeline */}
+            {/* Timeline */}
             <motion.div
               className="relative pl-6 border-l-2 border-[var(--accent-primary)]/30 space-y-4 mt-4"
               initial={{ opacity: 0 }}
@@ -217,7 +216,7 @@ const About = () => {
               ))}
             </motion.div>
 
-            {/* Floating tech badges – positioned absolutely inside this container */}
+            {/* Floating tech badges */}
             <div className="relative h-0">
               {techBadges.map((badge, idx) => (
                 <FloatingBadge
@@ -233,7 +232,7 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* --- RIGHT SIDE: Interactive Education Card with Profile Image --- */}
+          {/* RIGHT SIDE: Education Card with Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -244,7 +243,6 @@ const About = () => {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
           >
-            {/* 3D Tilt Card */}
             <motion.div
               className="glass-premium p-6 md:p-8 rounded-3xl border border-[var(--border-color)] relative overflow-hidden transition-shadow duration-300 hover:shadow-[0_20px_60px_var(--glow-color)]"
               style={{
@@ -252,7 +250,6 @@ const About = () => {
                 transition: 'transform 0.1s ease-out',
               }}
             >
-              {/* Spotlight gradient */}
               <div
                 className="absolute inset-0 pointer-events-none opacity-20 transition-opacity duration-300"
                 style={{
@@ -272,11 +269,11 @@ const About = () => {
                 </span>
               </div>
 
-              {/* Profile image + university info */}
+              {/* Profile + University */}
               <div className="flex items-center gap-4 mb-4 p-3 glass-light rounded-xl border border-[var(--border-color)]">
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center border-2 border-cyan-400/30 shadow-[0_0_30px_rgba(79,172,254,0.1)] overflow-hidden flex-shrink-0">
                   <img
-                    src="/profile.jpg"   /* ← replace with your image path */
+                    src="/profile.jpg"
                     alt="Divyansh Rastogi"
                     className="w-full h-full object-cover"
                   />
@@ -287,7 +284,7 @@ const About = () => {
                 </div>
               </div>
 
-              {/* Stats Grid */}
+              {/* Stats Grid – no icons */}
               <div className="grid grid-cols-2 gap-3 mt-4">
                 {stats.map((stat, idx) => (
                   <motion.div
@@ -296,7 +293,6 @@ const About = () => {
                     whileHover={{ scale: 1.03, borderColor: 'rgba(79,172,254,0.3)' }}
                     transition={{ duration: 0.2 }}
                   >
-                    <stat.icon className="text-[var(--accent-primary)] mx-auto mb-1 text-sm" />
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                     <p className="text-[10px] font-medium text-[var(--text-muted)] uppercase tracking-wider mt-0.5">
                       {stat.label}

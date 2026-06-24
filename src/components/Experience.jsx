@@ -35,7 +35,7 @@ const experiences = [
     icon: FaHandsHelping,
     color: '#a855f7',
     gradient: 'from-purple-500 to-pink-400',
-    metrics: ['10+ Workshops', '300+ Students', '5 Hackathons'],
+    metrics: ['10+ Workshops', '300+ Students', '3 Hackathons'],
     description: 'Assisted in organizing technical workshops, hackathons, and community outreach programs. Collaborated with team members to deliver high-quality learning experiences.',
     achievements: [
       'Co-organized 5 hackathons with 100+ participants each',
@@ -53,7 +53,7 @@ const experiences = [
     icon: FaTrophy,
     color: '#f97316',
     gradient: 'from-orange-500 to-amber-400',
-    metrics: ['50+ Delegates', '10+ Countries', '6 Committees'],
+    metrics: ['50+ Delegates', '3 Committees'],
     description: 'Managed delegate relations, coordinated schedules, and ensured a smooth experience for participants from diverse backgrounds. Handled communications and conflict resolution.',
     achievements: [
       'Resolved 95% of delegate queries within 2 hours',
@@ -62,24 +62,24 @@ const experiences = [
     ],
     impact: 'Delivered a world-class conference experience and fostered international collaboration.'
   },
-  {
-    id: 4,
-    title: 'Community Teaching Volunteer',
-    org: 'STEM Outreach',
-    duration: 'Sep 2022 – May 2023',
-    location: 'Online',
-    icon: FaChalkboardTeacher,
-    color: '#10b981',
-    gradient: 'from-emerald-500 to-green-400',
-    metrics: ['50+ Students', '4 Courses', '10 Schools'],
-    description: 'Taught programming and computer science fundamentals to high school students from underserved communities. Designed interactive lessons and mentored students in project building.',
-    achievements: [
-      'Developed a 4-week Python curriculum',
-      '60% of students built their first project',
-      'Received "Most Inspiring Teacher" award'
-    ],
-    impact: 'Empowered 50+ students with essential digital skills and ignited their passion for technology.'
-  }
+  // {
+  //   id: 4,
+  //   title: 'Community Teaching Volunteer',
+  //   org: 'STEM Outreach',
+  //   duration: 'Sep 2022 – May 2023',
+  //   location: 'Online',
+  //   icon: FaChalkboardTeacher,
+  //   color: '#10b981',
+  //   gradient: 'from-emerald-500 to-green-400',
+  //   metrics: ['50+ Students', '4 Courses', '10 Schools'],
+  //   description: 'Taught programming and computer science fundamentals to high school students from underserved communities. Designed interactive lessons and mentored students in project building.',
+  //   achievements: [
+  //     'Developed a 4-week Python curriculum',
+  //     '60% of students built their first project',
+  //     'Received "Most Inspiring Teacher" award'
+  //   ],
+  //   impact: 'Empowered 50+ students with essential digital skills and ignited their passion for technology.'
+  // }
 ];
 
 // Animated Counter Component

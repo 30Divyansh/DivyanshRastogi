@@ -10,8 +10,8 @@ import { SiTensorflow, SiTailwindcss } from 'react-icons/si';
 
 // ----- DATA -----
 const stats = [
-  { label: 'Projects', value: 12, suffix: '+' },
-  { label: 'Coding Problems', value: 400, suffix: '+' },
+  { label: 'Projects', value: 5, suffix: '+' },
+  { label: 'Coding Problems', value: 600, suffix: '+' },
 ];
 
 const techIcons = [
@@ -216,7 +216,7 @@ const Hero = () => {
               transition={{ delay: 0.5 }}
               className="flex flex-wrap items-center gap-4 pt-2"
             >
-              <motion.a
+              {/* <motion.a
                 href="/resume.pdf"
                 className="relative inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold"
                 style={{ x: springX, y: springY }}
@@ -238,9 +238,9 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <FaPaperPlane /> Contact
-              </motion.a>
+              </motion.a> */}
 
-              <div className="flex gap-2 ml-2">
+              {/* <div className="flex gap-2 ml-2">
                 <a href="#" className="social-icon-wrapper" aria-label="GitHub">
                   <FaGithub className="social-icon" />
                 </a>
@@ -250,7 +250,7 @@ const Hero = () => {
                 <a href="#" className="social-icon-wrapper" aria-label="Email">
                   <FaEnvelope className="social-icon" />
                 </a>
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
@@ -300,14 +300,14 @@ const Hero = () => {
                 </div>
 
                 <div className="mt-4 grid grid-cols-2 gap-2 w-full">
-                  <div className="glass-light p-2 rounded-lg text-center border border-[var(--border-color)]">
+                  {/* <div className="glass-light p-2 rounded-lg text-center border border-[var(--border-color)]">
                     <p className="text-xs text-[var(--text-muted)]">CGPA</p>
-                    <p className="text-sm font-bold text-[var(--text-primary)]">8.9</p>
+                    <p className="text-sm font-bold text-[var(--text-primary)]">8.7</p>
                   </div>
                   <div className="glass-light p-2 rounded-lg text-center border border-[var(--border-color)]">
                     <p className="text-xs text-[var(--text-muted)]">Projects</p>
-                    <p className="text-sm font-bold text-[var(--text-primary)]">12+</p>
-                  </div>
+                    <p className="text-sm font-bold text-[var(--text-primary)]">5+</p>
+                  </div> */}
                 </div>
               </div>
             </motion.div>

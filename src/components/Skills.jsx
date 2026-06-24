@@ -3,11 +3,51 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const skillCategories = [
-  { title: 'Programming', skills: ['C++', 'Python', 'JavaScript', 'SQL'] },
-  { title: 'Frontend', skills: ['React', 'Tailwind CSS', 'HTML5', 'CSS3'] },
-  { title: 'Backend', skills: ['Node.js', 'Express.js', 'MongoDB'] },
-  { title: 'AI / ML', skills: ['TensorFlow', 'Scikit-Learn', 'Hugging Face', 'OpenCV'] },
-  { title: 'Tools', skills: ['Git', 'GitHub', 'Postman', 'VS Code'] },
+  {
+    title: 'Languages & Core',
+    skills: ['C++', 'C', 'JavaScript', 'TypeScript', 'SQL'],
+  },
+  {
+    title: 'Full Stack & Web',
+    skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'WebRTC', 'REST APIs'],
+  },
+  {
+    title: 'AI / ML / Deep Learning',
+    skills: [
+      'Machine Learning',
+      'Deep Learning',
+      'NLP',
+      'TensorFlow',
+      'Keras',
+      'PennyLane',
+      'BERT',
+      'ELECTRA',
+      'SimCLR',
+      'NT-Xent Loss',
+      'Tokenization',
+    ],
+  },
+  {
+    title: 'System Design & Databases',
+    skills: [
+      'System Design',
+      'Caching',
+      'Load Balancing',
+      'Database Indexing',
+      'Sharding',
+      'OOPs',
+      'DBMS',
+      'Operating Systems',
+      'Kafka',
+      'Redis',
+      'Cassandra',
+      'Elasticsearch',
+    ],
+  },
+  {
+    title: 'Tools & APIs',
+    skills: ['Git', 'GitHub', 'Zoom API'],
+  },
 ];
 
 const Skills = () => {
@@ -20,9 +60,7 @@ const Skills = () => {
       className="py-12"
       id="skills"
     >
-      <h2 className="section-title">
-        Skills
-      </h2>
+      <h2 className="section-title">Skills</h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {skillCategories.map((cat, idx) => (
           <motion.div
@@ -31,11 +69,11 @@ const Skills = () => {
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            whileHover={{ 
-              y: -8, 
-              scale: 1.02, 
+            whileHover={{
+              y: -8,
+              scale: 1.02,
               borderColor: 'rgba(79, 172, 254, 0.5)',
-              boxShadow: '0 20px 60px -15px rgba(79, 172, 254, 0.3)'
+              boxShadow: '0 20px 60px -15px rgba(79, 172, 254, 0.3)',
             }}
             className="glass-premium p-6 rounded-2xl transition-all duration-300 border border-white/5"
           >
@@ -45,8 +83,8 @@ const Skills = () => {
             </h3>
             <div className="flex flex-wrap gap-2">
               {cat.skills.map((skill) => (
-                <span 
-                  key={skill} 
+                <span
+                  key={skill}
                   className="px-3 py-1.5 glass-premium rounded-xl text-sm text-gray-200 border border-white/5 hover:border-cyan-400/40 transition-all duration-300 hover:shadow-[0_0_20px_rgba(79,172,254,0.15)]"
                 >
                   {skill}

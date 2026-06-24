@@ -31,7 +31,7 @@ const MainPortfolio = () => {
         <TechRadial />          {/* 🌟 Premium radial tech icons */}
         <Projects />
         <Experience />
-        <CodingProfiles />
+        
         <Timeline />
         <Contact />
       </main>

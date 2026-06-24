@@ -23,7 +23,6 @@ const CursorTrail = () => {
     };
     window.addEventListener('mousemove', onMouseMove);
 
-    // Also track touch for mobile
     const onTouchMove = (e) => {
       const touch = e.touches[0];
       if (touch) {
@@ -88,7 +87,7 @@ const CursorTrail = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none -z-10"
+      className="fixed inset-0 w-full h-full pointer-events-none z-[5]"
       style={{ position: 'fixed', top: 0, left: 0 }}
     />
   );

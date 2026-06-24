@@ -1,7 +1,7 @@
 ﻿// src/App.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { FaVolumeUp, FaVolumeMute, FaSun, FaMoon } from 'react-icons/fa';
+import { FaVolumeUp, FaVolumeMute, FaSun, FaMoon, FaVideo, FaVideoSlash } from 'react-icons/fa';
 import IntroVideo from './components/IntroVideo';
 import MainPortfolio from './components/MainPortfolio';
 import CursorTrail from './components/CursorTrail';
@@ -9,6 +9,7 @@ import CursorTrail from './components/CursorTrail';
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [isDark, setIsDark] = useState(true);
+  const [videoOn, setVideoOn] = useState(true);        // video layer on/off
   const [bgVideoMuted, setBgVideoMuted] = useState(true);
   const bgVideoRef = useRef(null);
 
@@ -46,8 +47,22 @@ function App() {
     setShowIntro(false);
   };
 
-  // --- Background video mute toggle ---
-  const toggleBgVideoMute = () => {
+  // --- Toggle video on/off ---
+  const toggleVideo = () => {
+    const newState = !videoOn;
+    setVideoOn(newState);
+    // When video is turned off, mute the audio and hide the audio button
+    if (!newState) {
+      setBgVideoMuted(true);
+      if (bgVideoRef.current) {
+        bgVideoRef.current.muted = true;
+      }
+    }
+  };
+
+  // --- Toggle audio mute (only when video is on) ---
+  const toggleAudio = () => {
+    if (!videoOn) return; // audio control only works when video is on
     setBgVideoMuted(prev => !prev);
     if (bgVideoRef.current) {
       bgVideoRef.current.muted = !bgVideoRef.current.muted;
@@ -56,36 +71,35 @@ function App() {
 
   return (
     <>
-      {/* Global cursor trail */}
       <CursorTrail />
 
-      {/* --- LAYER 1: Background Video (fixed, lowest z-index) --- */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <video
-          ref={bgVideoRef}
-          autoPlay
-          loop
-          muted={bgVideoMuted}
-          playsInline
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.85) saturate(1.1)' }}
-        >
-          {/* Use the same intro video file as background */}
-          <source src="/intro-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Adaptive overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundColor: isDark
-              ? 'rgba(10, 17, 37, 0.55)'
-              : 'rgba(253, 246, 227, 0.55)',
-          }}
-        />
-      </div>
+      {/* --- LAYER 1: Background Video (only if videoOn) --- */}
+      {videoOn && (
+        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+          <video
+            ref={bgVideoRef}
+            autoPlay
+            loop
+            muted={bgVideoMuted}
+            playsInline
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.85) saturate(1.1)' }}
+          >
+            <source src="/intro-video.mp4" type="video/mp4" />
+          </video>
+          {/* Adaptive overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundColor: isDark
+                ? 'rgba(10, 17, 37, 0.55)'
+                : 'rgba(253, 246, 227, 0.55)',
+            }}
+          />
+        </div>
+      )}
 
-      {/* --- LAYER 2: All website content (above video) --- */}
+      {/* --- LAYER 2: All website content --- */}
       <div className="relative z-10">
         <AnimatePresence mode="wait">
           {showIntro ? (
@@ -100,34 +114,59 @@ function App() {
         </AnimatePresence>
       </div>
 
-      {/* --- Controls: ONLY ONE mute/unmute button for the background video --- */}
+      {/* --- CONTROLS --- */}
+
+      {/* Video Toggle (bottom‑left, above audio button) */}
       <motion.button
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.96 }}
-        transition={{ duration: 0.3, delay: 0.4 }}
-        onClick={toggleBgVideoMute}
-        aria-label={bgVideoMuted ? 'Unmute background video' : 'Mute background video'}
-        className="fixed bottom-6 left-6 z-[1100] flex items-center gap-3 rounded-full border border-[var(--border-color)] bg-[var(--glass-bg)] px-4 py-3 text-sm text-[var(--text-primary)] shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-[var(--glass-bg)] hover:shadow-[0_0_30px_var(--glow-color)]"
+        transition={{ duration: 0.3, delay: 0.3 }}
+        onClick={toggleVideo}
+        aria-label={videoOn ? 'Turn off background video' : 'Turn on background video'}
+        className="fixed bottom-20 left-6 z-[1100] flex items-center gap-3 rounded-full border border-[var(--border-color)] bg-[var(--glass-bg)] px-4 py-3 text-sm text-[var(--text-primary)] shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-[var(--glass-bg)] hover:shadow-[0_0_30px_var(--glow-color)]"
       >
-        {bgVideoMuted ? (
-          <FaVolumeMute className="h-5 w-5 text-red-400" />
+        {videoOn ? (
+          <FaVideo className="h-5 w-5 text-cyan-400" />
         ) : (
-          <FaVolumeUp className="h-5 w-5 text-emerald-400" />
+          <FaVideoSlash className="h-5 w-5 text-red-400" />
         )}
         <span className="font-medium tracking-[0.08em]">
-          {bgVideoMuted ? 'Muted' : 'Sound On'}
+          {videoOn ? 'Video On' : 'Video Off'}
         </span>
       </motion.button>
 
-      {/* Theme toggle (bottom-right) */}
+      {/* Audio Toggle (only appears when video is on) */}
+      {videoOn && (
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.96 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+          onClick={toggleAudio}
+          aria-label={bgVideoMuted ? 'Unmute background video' : 'Mute background video'}
+          className="fixed bottom-6 left-6 z-[1100] flex items-center gap-3 rounded-full border border-[var(--border-color)] bg-[var(--glass-bg)] px-4 py-3 text-sm text-[var(--text-primary)] shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-[var(--glass-bg)] hover:shadow-[0_0_30px_var(--glow-color)]"
+        >
+          {bgVideoMuted ? (
+            <FaVolumeMute className="h-5 w-5 text-red-400" />
+          ) : (
+            <FaVolumeUp className="h-5 w-5 text-emerald-400" />
+          )}
+          <span className="font-medium tracking-[0.08em]">
+            {bgVideoMuted ? 'Muted' : 'Sound On'}
+          </span>
+        </motion.button>
+      )}
+
+      {/* Theme Toggle (bottom‑right, unchanged) */}
       <motion.button
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.96 }}
-        transition={{ duration: 0.3, delay: 0.6 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
         onClick={toggleTheme}
         aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
         className="fixed bottom-6 right-6 z-[1100] flex items-center gap-3 rounded-full border border-[var(--border-color)] bg-[var(--glass-bg)] px-4 py-3 text-sm text-[var(--text-primary)] shadow-lg backdrop-blur-xl transition-all duration-300 hover:bg-[var(--glass-bg)] hover:shadow-[0_0_30px_var(--glow-color)]"
