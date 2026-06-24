@@ -62,24 +62,6 @@ const experiences = [
     ],
     impact: 'Delivered a world-class conference experience and fostered international collaboration.'
   },
-  // {
-  //   id: 4,
-  //   title: 'Community Teaching Volunteer',
-  //   org: 'STEM Outreach',
-  //   duration: 'Sep 2022 – May 2023',
-  //   location: 'Online',
-  //   icon: FaChalkboardTeacher,
-  //   color: '#10b981',
-  //   gradient: 'from-emerald-500 to-green-400',
-  //   metrics: ['50+ Students', '4 Courses', '10 Schools'],
-  //   description: 'Taught programming and computer science fundamentals to high school students from underserved communities. Designed interactive lessons and mentored students in project building.',
-  //   achievements: [
-  //     'Developed a 4-week Python curriculum',
-  //     '60% of students built their first project',
-  //     'Received "Most Inspiring Teacher" award'
-  //   ],
-  //   impact: 'Empowered 50+ students with essential digital skills and ignited their passion for technology.'
-  // }
 ];
 
 // Animated Counter Component
@@ -116,7 +98,7 @@ const Experience = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="py-12 md:py-16 relative overflow-hidden"
+      className="py-10 md:py-16 relative overflow-hidden"
       id="experience"
     >
       {/* Floating background accents */}
@@ -140,9 +122,9 @@ const Experience = () => {
 
       <div className="relative z-10">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6 md:mb-8">
           <h2 className="section-title">Experience & Leadership</h2>
-          <span className="text-[var(--text-muted)] text-sm hidden md:block font-medium tracking-wide">
+          <span className="text-[var(--text-muted)] text-xs md:text-sm hidden md:block font-medium tracking-wide">
             {experiences.length} roles
           </span>
         </div>
@@ -163,19 +145,21 @@ const Experience = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  className={`relative flex flex-col md:flex-row items-start gap-4 md:gap-8 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
+                  className="relative flex flex-col md:flex-row items-start gap-4 md:gap-8"
                 >
                   {/* Timeline Dot with Icon - Desktop */}
-                  <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 z-10 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br shadow-lg border-2 border-white/20 backdrop-blur-sm"
-                       style={{ background: `linear-gradient(135deg, ${exp.color}, ${exp.color}cc)` }}>
+                  <div
+                    className="absolute left-4 md:left-1/2 transform -translate-x-1/2 z-10 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br shadow-lg border-2 border-white/20 backdrop-blur-sm"
+                    style={{ background: `linear-gradient(135deg, ${exp.color}, ${exp.color}cc)` }}
+                  >
                     <exp.icon className="text-white text-lg" />
                   </div>
 
-                  {/* Experience Card */}
+                  {/* Experience Card - full width on mobile, half on desktop */}
                   <motion.div
-                    className={`glass-premium rounded-3xl p-5 md:p-8 w-full md:w-[calc(50%-3rem)] relative overflow-hidden transition-all duration-300 border border-[var(--border-color)] hover:shadow-[0_20px_60px_var(--glow-color)] hover:border-[rgba(79,172,254,0.3)] hover:-translate-y-1`}
+                    className={`glass-premium rounded-3xl p-4 sm:p-5 md:p-8 w-full md:w-[calc(50%-3rem)] relative overflow-hidden transition-all duration-300 border border-[var(--border-color)] hover:shadow-[0_20px_60px_var(--glow-color)] hover:border-[rgba(79,172,254,0.3)] hover:-translate-y-1 ${
+                      index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'
+                    }`}
                     whileHover={{
                       scale: 1.01,
                       transition: { duration: 0.2 }
@@ -185,19 +169,26 @@ const Experience = () => {
                     <div className={`absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b ${exp.gradient} rounded-l-full`} />
 
                     {/* Mobile dot indicator */}
-                    <div className="md:hidden flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br shadow-md flex-shrink-0" style={{ background: `linear-gradient(135deg, ${exp.color}, ${exp.color}cc)` }}>
+                    <div className="md:hidden flex items-center gap-3 mb-3">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br shadow-md flex-shrink-0"
+                        style={{ background: `linear-gradient(135deg, ${exp.color}, ${exp.color}cc)` }}
+                      >
                         <exp.icon className="text-white text-sm" />
                       </div>
                       <span className="text-xs font-medium text-[var(--text-muted)]">{exp.duration}</span>
                     </div>
 
-                    <div className="ml-0 md:ml-0">
+                    <div>
                       {/* Header */}
                       <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
                         <div>
-                          <h3 className="text-lg md:text-2xl font-bold text-[var(--text-primary)]">{exp.title}</h3>
-                          <p className="text-[var(--accent-primary)] font-semibold text-sm md:text-base">{exp.org}</p>
+                          <h3 className="text-base sm:text-lg md:text-2xl font-bold text-[var(--text-primary)] leading-tight">
+                            {exp.title}
+                          </h3>
+                          <p className="text-[var(--accent-primary)] font-semibold text-sm md:text-base">
+                            {exp.org}
+                          </p>
                         </div>
                         <span className="hidden md:inline-block text-xs font-medium text-[var(--text-muted)] bg-[var(--glass-bg)] px-3 py-1 rounded-full border border-[var(--border-color)]">
                           {exp.duration}
@@ -205,26 +196,29 @@ const Experience = () => {
                       </div>
 
                       {/* Location */}
-                      <div className="flex items-center gap-2 text-sm text-[var(--text-muted)] mb-3">
+                      <div className="flex items-center gap-2 text-xs sm:text-sm text-[var(--text-muted)] mb-3">
                         <FaMapMarkerAlt className="text-xs" />
                         <span>{exp.location}</span>
                       </div>
 
                       {/* Description */}
-                      <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed mb-4">
+                      <p className="text-[var(--text-secondary)] text-xs sm:text-sm md:text-base leading-relaxed mb-4">
                         {exp.description}
                       </p>
 
                       {/* Metrics with Animated Counters */}
-                      <div className="flex flex-wrap gap-2 md:gap-3 mb-4">
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3 mb-4">
                         {exp.metrics.map((metric, idx) => {
                           const parts = metric.split(' ');
                           const number = parseInt(parts[0]) || 0;
                           const label = parts.slice(1).join(' ');
                           return (
-                            <div key={idx} className="glass-light px-2 py-1 md:px-3 md:py-1.5 rounded-full text-xs font-medium text-[var(--text-primary)] border border-[var(--border-color)] flex items-center gap-1">
+                            <div
+                              key={idx}
+                              className="glass-light px-2 py-0.5 sm:py-1 md:px-3 md:py-1.5 rounded-full text-[10px] sm:text-xs font-medium text-[var(--text-primary)] border border-[var(--border-color)] flex items-center gap-0.5 sm:gap-1"
+                            >
                               <AnimatedCounter value={number} suffix={label.startsWith('+') ? '+' : ''} />
-                              <span className="text-[10px] md:text-xs">{label.replace(/^\+/, '')}</span>
+                              <span className="text-[8px] sm:text-[10px] md:text-xs">{label.replace(/^\+/, '')}</span>
                             </div>
                           );
                         })}
@@ -237,16 +231,16 @@ const Experience = () => {
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
                         className="overflow-hidden"
                       >
-                        <div className="pt-4 border-t border-[var(--border-color)] space-y-4">
+                        <div className="pt-3 sm:pt-4 border-t border-[var(--border-color)] space-y-3 sm:space-y-4">
                           {/* Achievements */}
                           <div>
-                            <h4 className="text-sm md:text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
+                            <h4 className="text-xs sm:text-sm md:text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
                               <FaStar className="text-yellow-400" /> Key Achievements
                             </h4>
                             <ul className="mt-2 space-y-1.5">
                               {exp.achievements.map((ach, i) => (
-                                <li key={i} className="text-sm text-[var(--text-secondary)] flex items-start gap-2">
-                                  <span className="text-[var(--accent-primary)] text-xs mt-1">▸</span>
+                                <li key={i} className="text-xs sm:text-sm text-[var(--text-secondary)] flex items-start gap-2">
+                                  <span className="text-[var(--accent-primary)] text-xs mt-0.5">▸</span>
                                   {ach}
                                 </li>
                               ))}
@@ -254,10 +248,10 @@ const Experience = () => {
                           </div>
                           {/* Impact */}
                           <div>
-                            <h4 className="text-sm md:text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
+                            <h4 className="text-xs sm:text-sm md:text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
                               <FaRocket className="text-emerald-400" /> Impact
                             </h4>
-                            <p className="text-sm text-[var(--text-secondary)] mt-1">{exp.impact}</p>
+                            <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">{exp.impact}</p>
                           </div>
                         </div>
                       </motion.div>
@@ -265,15 +259,15 @@ const Experience = () => {
                       {/* Expand/Collapse Toggle */}
                       <button
                         onClick={() => toggleExpand(exp.id)}
-                        className="mt-4 flex items-center gap-2 text-sm font-medium text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors"
+                        className="mt-3 sm:mt-4 flex items-center gap-2 text-xs sm:text-sm font-medium text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors"
                       >
                         {isExpanded ? (
                           <>
-                            <FaChevronUp className="text-xs" /> Show less
+                            <FaChevronUp className="text-[10px] sm:text-xs" /> Show less
                           </>
                         ) : (
                           <>
-                            <FaChevronDown className="text-xs" /> View details
+                            <FaChevronDown className="text-[10px] sm:text-xs" /> View details
                           </>
                         )}
                       </button>
