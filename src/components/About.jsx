@@ -8,7 +8,7 @@ import {
 } from 'react-icons/fa';
 import { SiTensorflow, SiJavascript, SiTailwindcss } from 'react-icons/si';
 
-// ----- Updated Stats (no icons, new values) -----
+// ----- Stats (no icons) -----
 const stats = [
   { label: 'Projects', value: 5, suffix: '+' },
   { label: 'Coding Problems', value: 600, suffix: '+' },
@@ -269,7 +269,7 @@ const About = () => {
                 </span>
               </div>
 
-              {/* Profile + University */}
+              {/* Profile + University – CGPA removed */}
               <div className="flex items-center gap-4 mb-4 p-3 glass-light rounded-xl border border-[var(--border-color)]">
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center border-2 border-cyan-400/30 shadow-[0_0_30px_rgba(79,172,254,0.1)] overflow-hidden flex-shrink-0">
                   <img
@@ -280,7 +280,7 @@ const About = () => {
                 </div>
                 <div>
                   <p className="font-semibold text-[var(--text-primary)]">JIIT Noida</p>
-                  <p className="text-xs text-[var(--text-muted)]">CGPA: 8.7 / 10</p>
+                  {/* CGPA line removed */}
                 </div>
               </div>
 
